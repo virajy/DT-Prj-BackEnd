@@ -28,6 +28,7 @@ import com.model.UserDetails;
 @Configuration
 @ComponentScan("com")
 @EnableTransactionManagement
+//dsfdskfmk
 public class HibernateConfig 
 {
 public static SessionFactory sessionfactory=null;
