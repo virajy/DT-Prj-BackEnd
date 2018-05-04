@@ -28,7 +28,7 @@ import com.model.UserDetails;
 @Configuration
 @ComponentScan("com")
 @EnableTransactionManagement
-//dsfdskfmk
+
 public class HibernateConfig 
 {
 public static SessionFactory sessionfactory=null;
@@ -86,26 +86,26 @@ public  HibernateTransactionManager gethibernatemanager(SessionFactory sf)
 }
 
 //factory methods
-@Bean(name="getproductdao")
-public ProductDao getproductdao()
+@Bean(name="getProductDao")
+public ProductDao getProductDao()
 {
 	return new ProductDaoImpl();
 }
 
-@Bean(name="getcategorydao")
-public CategoryDao getcategorydao()
+@Bean(name="getCategoryDao")
+public CategoryDao getCategoryDao()
 {
 	return new CategoryDaoImpl();
 }
 
-@Bean(name="getsupplierdao")
-public SupplierDao getsupplierdao()
+@Bean(name="getSupplierDao")
+public SupplierDao getSupplierDao()
 {
 	return new SupplierDaoImpl();
 }
 
-@Bean(name="getuserdetailsdao")
-public UserDetailsDao getuserdetailsdao()
+@Bean(name="getUserdetailsDao")
+public UserDetailsDao getUserdetailsDao()
 {
 	return new UserDetailsDaoImpl();
 }

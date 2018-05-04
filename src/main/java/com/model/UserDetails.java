@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 public class UserDetails implements Serializable
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private	int u_id;
 	
 	@Column(nullable=false,unique=true)
@@ -43,7 +46,19 @@ public class UserDetails implements Serializable
 	@Column(nullable=false)
 	private String u_password;
 	
+	@Column(nullable=false)
+	private int dob;
+	 
+	@Column(nullable=false)
+	private String gender;
 	
+	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public int getU_id() {
 		return u_id;
 	}
