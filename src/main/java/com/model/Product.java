@@ -28,13 +28,13 @@ public class Product implements Serializable
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int p_id;
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private String p_brand;
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private double p_price;
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private String p_discription;
-	@Column(nullable=true)
+	@Column(nullable=false)
 	private int p_quantity;
 	
 

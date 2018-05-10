@@ -89,17 +89,7 @@ public  class ProductDaoImpl implements ProductDao
 		sessionfactory=hc.getSessionFactory();
 		Session s=sessionfactory.openSession();
 		List<Product> l=s.createQuery("from com.model.Product").list();
-		for (Product product : l) 
-		{
-			System.out.println("Product Id:"+product.getP_id());
-			System.out.println("Product Brand:"+product.getP_brand());
-			System.out.println("Product Price:"+product.getP_price());
-			System.out.println("Product Discription:"+product.getP_discription());
-			System.out.println("Product Quantity:"+product.getP_quantity());
-			System.out.println("Category Id:"+product.getCategory().getC_id());
-			System.out.println("Supplier Id:"+product.getSupplier().getS_id());
-			System.out.println();
-		}
+		
 		s.close();
 		return l;
 	}

@@ -15,20 +15,20 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.Dao.CategoryDao;
 import com.Dao.ProductDao;
 import com.Dao.SupplierDao;
-import com.Dao.UserDetailsDao;
+
 import com.daoImpl.CategoryDaoImpl;
 import com.daoImpl.ProductDaoImpl;
 import com.daoImpl.SupplierDaoImpl;
-import com.daoImpl.UserDetailsDaoImpl;
+
 import com.model.Category;
 import com.model.Product;
 import com.model.Supplier;
-import com.model.UserDetails;
+import com.model.User;
+
 
 @Configuration
-@ComponentScan("com")
+@ComponentScan(basePackages={"com"})
 @EnableTransactionManagement
-
 public class HibernateConfig 
 {
 public static SessionFactory sessionfactory=null;
@@ -43,8 +43,8 @@ public DriverManagerDataSource datasource()
 	return dmds;
 }
 
-@Autowired
-@Bean(name="getsession")
+
+@Bean(name="sessionFactory")
 public SessionFactory getSessionFactory()
 {
 	LocalSessionFactoryBuilder ls=null;
@@ -64,7 +64,8 @@ public SessionFactory getSessionFactory()
 	ls.addAnnotatedClass(Category.class);
 	ls.addAnnotatedClass(Supplier.class);
 	ls.addAnnotatedClass(Product.class);
-	ls.addAnnotatedClass(UserDetails.class);
+	ls.addAnnotatedClass(User.class);
+	
 	
 	sessionfactory=ls.buildSessionFactory();
 	System.out.println("Session Factory Object Created");
@@ -73,8 +74,6 @@ public SessionFactory getSessionFactory()
 	}
 
 
-
-@Autowired
 @Bean(name="gethibernatemanager")
 public  HibernateTransactionManager gethibernatemanager(SessionFactory sf)
 {
@@ -85,29 +84,8 @@ public  HibernateTransactionManager gethibernatemanager(SessionFactory sf)
 	
 }
 
-//factory methods
-@Bean(name="getProductDao")
-public ProductDao getProductDao()
-{
-	return new ProductDaoImpl();
-}
 
-@Bean(name="getCategoryDao")
-public CategoryDao getCategoryDao()
-{
-	return new CategoryDaoImpl();
-}
 
-@Bean(name="getSupplierDao")
-public SupplierDao getSupplierDao()
-{
-	return new SupplierDaoImpl();
-}
 
-@Bean(name="getUserdetailsDao")
-public UserDetailsDao getUserdetailsDao()
-{
-	return new UserDetailsDaoImpl();
-}
 }
 

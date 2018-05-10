@@ -91,12 +91,7 @@ public List<Category> displayAll(Category c)
 	sessionfactory=hc.getSessionFactory();
 	Session s=sessionfactory.openSession();
 	List<Category> l=s.createQuery("from com.model.Category").list();
-	for (Category c1 : l)
-	{
-		System.out.println("Category Id:"+c1.getC_id());
-		System.out.println("Category name:"+c1.getC_name());
-		System.out.println("Category Discription:"+c1.getC_discription());
-	}
+	
 	return l;
 	}
 	catch (Exception e)

@@ -75,6 +75,8 @@ public class Category implements Serializable {
 																								// system.
 	private Set<Product> products = new HashSet<Product>(0);
 
+	
+
 	public Set<Product> getProducts() {
 		return products;
 	}

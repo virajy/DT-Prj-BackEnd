@@ -3,11 +3,13 @@ package com.daoImpl;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import com.Dao.SupplierDao;
 import com.config.HibernateConfig;
@@ -40,6 +42,7 @@ SessionFactory sessionfactory;
 		}
 	}
 
+	@Transactional
 	public boolean deleteSupplier(Supplier s) 
 	{
 		try
@@ -61,6 +64,7 @@ SessionFactory sessionfactory;
 		}
 	}
 
+	@Transactional
 	public boolean updateSupplier(Supplier s) 
 	{
 		try
@@ -112,17 +116,6 @@ SessionFactory sessionfactory;
 		sessionfactory=hc.getSessionFactory();
 		Session s1=sessionfactory.openSession();
 		List<Supplier> su=s1.createQuery("from com.model.Supplier").list();
-		for (Supplier supplier : su) 
-		{
-			
-			System.out.println("Supplier Id"+supplier.getS_id());
-			System.out.println("Supplier Name:"+supplier.getS_name());
-			System.out.println("Supplier Phone:"+supplier.getS_phone());
-			System.out.println("Supplier Email:"+supplier.getS_email());
-			System.out.println("Supplier Pincode:"+supplier.getS_pincode());
-			System.out.println("Supplier StateId:"+supplier.getS_stateid());
-			
-		}
 		return su;
 		}
 		catch(Exception e)
